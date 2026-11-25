@@ -351,7 +351,7 @@ SpecSync focuses strictly on deterministic static analysis. When code uses dynam
 ### Open an issue or pull request
 
 1. Search the [GitHub issues](https://github.com/Nikhil-Verma-01/specsync/issues) for existing reports. For a bug, include the SpecSync and Node.js versions, the command you ran, the expected and actual results, and a minimal Express and OpenAPI example using synthetic data. Discuss breaking changes and large features in an issue before starting work.
-2. [Fork SpecSync](https://github.com/Nikhil-Verma-01/specsync/fork), clone your fork, and create a branch from the upstream `main` branch. Use Node.js 22 for local development and install the locked dependencies with `npm ci`.
+2. [Fork SpecSync](https://github.com/Nikhil-Verma-01/specsync/fork), clone your fork, and create a branch from the upstream `main` branch. Use Node.js 24 for local development and install the locked dependencies with `npm ci`.
 3. Open a focused pull request against `main`. Explain what changed, why it changed, and how you verified it. Link the related issue and call out breaking changes to CLI flags, exit codes, configuration, or report output. Keep review feedback specific and respectful.
 
 ### Verify your changes
