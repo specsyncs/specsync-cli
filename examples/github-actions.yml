@@ -21,7 +21,7 @@ jobs:
           node-version: '20'
 
       - name: Run SpecSync Drift Check
-        uses: nikhilverma/specsync@v0.1.0
+        uses: specsyncs/specsync-cli@2f61a836ba6253761d6dbd142a08d205795db7c6 # v0.1.0
         with:
           openapi: './openapi.yaml'
           source: 'src/**/*.ts'

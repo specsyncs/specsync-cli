@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: ['18.x', '20.x', '22.x']
+        node-version: ['22.x', '24.x']
 
     steps:
       - name: Checkout Code
@@ -45,3 +45,39 @@ jobs:
 
       - name: Self-Check CLI Binary Execution
         run: node dist/cli.js check --config tests/fixtures/scenarios/all-match/specsync.json
+
+  runtime:
+    name: Packed CLI (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: ['18.x', '20.x']
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set Up Node.js 24 for Packaging
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+          cache: 'npm'
+
+      - name: Build and Pack CLI
+        run: |
+          npm ci
+          pack_dir="$RUNNER_TEMP/specsync-runtime"
+          mkdir -p "$pack_dir"
+          npm pack --pack-destination "$pack_dir"
+          echo "PACK_DIR=$pack_dir" >> "$GITHUB_ENV"
+
+      - name: Set Up Node.js ${{ matrix.node-version }} for Runtime Check
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install and Run Packed CLI
+        run: |
+          npm install --prefix "$PACK_DIR" --no-audit --no-fund "$PACK_DIR"/*.tgz
+          "$PACK_DIR/node_modules/.bin/specsync" check --config tests/fixtures/scenarios/all-match/specsync.json

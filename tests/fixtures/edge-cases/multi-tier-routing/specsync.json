@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/specsync/specsync/main/schema.json",
   "source": ["app.ts", "routes/**/*.ts"],
   "openapi": "openapi.yaml"
 }
