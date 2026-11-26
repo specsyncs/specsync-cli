@@ -177,7 +177,6 @@ You can customize its behavior using a `specsync.json` file in your project root
 
 ```json
 {
-  "$schema": "https://raw.githubusercontent.com/nikhilverma/specsync/main/schema.json",
   "openapi": "openapi.yaml",
   "source": [
     "src/**/*.{ts,js}",
@@ -264,7 +263,7 @@ jobs:
         with:
           node-version: 20
       - name: Check Express routes against OpenAPI spec
-        uses: nikhilverma/specsync@v0.1.0
+        uses: specsyncs/specsync-cli@2f61a836ba6253761d6dbd142a08d205795db7c6 # v0.1.0
         with:
           openapi: ./openapi.yaml
           source: src/**/*.ts
@@ -350,8 +349,8 @@ SpecSync focuses strictly on deterministic static analysis. When code uses dynam
 
 ### Open an issue or pull request
 
-1. Search the [GitHub issues](https://github.com/Nikhil-Verma-01/specsync/issues) for existing reports. For a bug, include the SpecSync and Node.js versions, the command you ran, the expected and actual results, and a minimal Express and OpenAPI example using synthetic data. Discuss breaking changes and large features in an issue before starting work.
-2. [Fork SpecSync](https://github.com/Nikhil-Verma-01/specsync/fork), clone your fork, and create a branch from the upstream `main` branch. Use Node.js 22 for local development and install the locked dependencies with `npm ci`.
+1. Search the [GitHub issues](https://github.com/specsyncs/specsync-cli/issues) for existing reports. For a bug, include the SpecSync and Node.js versions, the command you ran, the expected and actual results, and a minimal Express and OpenAPI example using synthetic data. Discuss breaking changes and large features in an issue before starting work.
+2. [Fork SpecSync](https://github.com/specsyncs/specsync-cli/fork), clone your fork, and create a branch from the upstream `main` branch. Use Node.js 24 for local development and install the locked dependencies with `npm ci`.
 3. Open a focused pull request against `main`. Explain what changed, why it changed, and how you verified it. Link the related issue and call out breaking changes to CLI flags, exit codes, configuration, or report output. Keep review feedback specific and respectful.
 
 ### Verify your changes
@@ -374,11 +373,11 @@ npm run build
 - Review the diff before pushing. Keep credentials, token-bearing `.npmrc` files, secret-bearing `.env` files, private OpenAPI specs, and production data out of commits, fixtures, issues, and logs. If a credential is exposed, revoke or rotate it immediately and notify a maintainer privately.
 - Explain any new dependency or upgrade in the PR. Verify its source and review its transitive changes. Commit the matching `package-lock.json` when dependencies change.
 - Run fork PR code in `pull_request` workflows with no publishing credentials and read-only permissions as needed. Keep untrusted PR code out of privileged workflows, including `pull_request_target`. Pin new third-party actions to full commit SHAs and pass untrusted input as data instead of interpolating it into shell scripts. [GitHub Actions secure use guidance](https://docs.github.com/en/actions/reference/security/secure-use)
-- Review workflow files, `action.yml`, dependency changes, and npm scripts before approving a fork workflow run. Maintainers handle release tags and npm publishing through the [release workflow](./.github/workflows/release.yml).
+- Review workflow files, `action.yml`, dependency changes, and npm scripts before approving a fork workflow run. The [release workflow](./.github/workflows/release.yml) publishes through npm Trusted Publishing. Configure `specsyncs/specsync-cli` as the repository and `release.yml` as the workflow filename in the package settings. [npm Trusted Publishing](https://docs.npmjs.com/trusted-publishers/)
 
 ### Report vulnerabilities privately
 
-Use **Report a vulnerability** on the [Security advisories page](https://github.com/Nikhil-Verma-01/specsync/security/advisories) if the button is available. Otherwise, open a GitHub issue asking for a private security contact and keep all vulnerability details out of the public issue. Share affected versions and impact once you have a private channel, and coordinate disclosure with the maintainers. [GitHub private reporting guidance](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/report-privately)
+Use **Report a vulnerability** on the [Security advisories page](https://github.com/specsyncs/specsync-cli/security/advisories) if the button is available. Otherwise, open a GitHub issue asking for a private security contact and keep all vulnerability details out of the public issue. Share affected versions and impact once you have a private channel, and coordinate disclosure with the maintainers. [GitHub private reporting guidance](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/report-privately)
 
 ---
 
