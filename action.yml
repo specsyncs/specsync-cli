@@ -1,4 +1,4 @@
-name: 'SpecSync Route/Spec Drift Check'
+name: 'SpecSync Express OpenAPI Drift Check'
 description: 'Zero-runtime static Express-to-OpenAPI drift detector. Catch undocumented, stale, and mismatched routes before they ship.'
 author: 'Nikhil Verma'
 branding:
