@@ -3,6 +3,7 @@ import { execFileSync, execSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { version } from "../src/version.js";
 import { BENCHMARK_TARGETS, type BenchmarkTarget } from "./benchmarks.config.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -282,7 +283,7 @@ async function main() {
   // Save report JSON
   mkdirSync(path.dirname(REPORT_PATH), { recursive: true });
   const report = {
-    specsync: "0.1.0",
+    specsync: version,
     generatedAt: new Date().toISOString(),
     totalTargets: results.length,
     results,

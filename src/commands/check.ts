@@ -8,6 +8,7 @@ import { compareRoutes } from "../comparison/compare-routes.js";
 import { printTerminalReport } from "../reporters/terminal.js";
 import { printJsonReport } from "../reporters/json.js";
 import { printGitHubAnnotations } from "../reporters/github.js";
+import { version } from "../version.js";
 import type {
   CheckOptions,
   ComparisonResult,
@@ -119,7 +120,7 @@ export async function checkCommand(
         console.log(
           JSON.stringify(
             {
-              specsync: "0.1.0",
+              specsync: version,
               error: message,
               exitCode: 1,
             },

@@ -131,6 +131,11 @@ export async function runPackSmokeTest(): Promise<void> {
       throw new Error(`Installed CLI not found at ${installedCli}`);
     }
 
+    const versionRes = await runCommand(process.execPath, [installedCli, "--version"], tempDir);
+    if (versionRes.exitCode !== 0 || versionRes.stdout.trim() !== packMetadata.version) {
+      throw new Error(`CLI --version should report ${packMetadata.version}:\n${versionRes.stdout}\n${versionRes.stderr}`);
+    }
+
     // 4a. Verify --help
     const helpRes = await runCommand(process.execPath, [installedCli, "check", "--help"], tempDir);
     if (helpRes.exitCode !== 0 || !helpRes.stdout.includes("Usage: specsync check")) {

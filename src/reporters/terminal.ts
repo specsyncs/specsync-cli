@@ -1,5 +1,6 @@
 import pc from "picocolors";
 import type { ComparisonResult, DiscrepancyType } from "../types.js";
+import { version } from "../version.js";
 
 export interface TerminalReportOptions {
   quiet?: boolean;
@@ -24,7 +25,7 @@ export function formatTerminalReport(
 
   const lines: string[] = [];
 
-  lines.push(pc.bold(pc.cyan("SpecSync")) + pc.dim(" v0.1.0 — static route/spec drift detector"));
+  lines.push(pc.bold(pc.cyan("SpecSync")) + pc.dim(` v${version} — static route/spec drift detector`));
   lines.push("");
 
   // 1. Limitations section

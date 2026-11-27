@@ -1,4 +1,5 @@
 import type { ComparisonResult, ComparisonSummary, Discrepancy, AnalysisLimitation } from "../types.js";
+import { version } from "../version.js";
 
 export interface JsonReportPayload {
   specsync: string;
@@ -13,8 +14,6 @@ export interface JsonReportOptions {
   timestamp?: string;
 }
 
-const SPECSYNC_VERSION = "0.1.0";
-
 /**
  * Formats a ComparisonResult into a structured JSON string.
  */
@@ -26,7 +25,7 @@ export function formatJsonReport(
   const timestamp = options.timestamp ?? new Date().toISOString();
 
   const payload: JsonReportPayload = {
-    specsync: SPECSYNC_VERSION,
+    specsync: version,
     timestamp,
     summary: result.summary,
     discrepancies: result.discrepancies,

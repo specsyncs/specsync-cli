@@ -4,7 +4,7 @@
 
 **Zero-server-startup, zero-runtime-instrumentation static Express-to-OpenAPI drift detector.**
 
-[![npm version](https://img.shields.io/badge/npm-v0.1.0-blue.svg?style=flat-square)](https://www.npmjs.com/package/@specsyncs/cli)
+[![npm version](https://img.shields.io/npm/v/@specsyncs/cli?style=flat-square)](https://www.npmjs.com/package/@specsyncs/cli)
 [![license](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](./LICENSE)
 [![node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg?style=flat-square)](https://nodejs.org/)
 [![typescript](https://img.shields.io/badge/typescript-5.7-blue.svg?style=flat-square)](https://www.typescriptlang.org/)

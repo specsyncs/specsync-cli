@@ -8,6 +8,7 @@ import {
   printJsonReport,
 } from "../src/reporters/json.js";
 import type { ComparisonResult } from "../src/types.js";
+import { version } from "../src/version.js";
 
 function makeCleanResult(): ComparisonResult {
   return {
@@ -161,7 +162,7 @@ describe("formatJsonReport", () => {
     const jsonStr = formatJsonReport(result);
 
     const parsed = JSON.parse(jsonStr);
-    expect(parsed.specsync).toBe("0.1.0");
+    expect(parsed.specsync).toBe(version);
     expect(parsed.timestamp).toBeDefined();
     expect(parsed.summary.mismatches).toBe(3);
     expect(parsed.summary.exitCode).toBe(1);

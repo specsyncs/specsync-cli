@@ -4,6 +4,7 @@ import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 import { describe, it, expect } from "vitest";
 import { runCheck } from "../src/commands/check.js";
+import { version } from "../src/version.js";
 
 const execFileAsync = promisify(execFile);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -174,7 +175,7 @@ describe("e2e: CLI process execution", () => {
 
     expect(exitCode).toBe(1);
     const parsed = JSON.parse(stdout);
-    expect(parsed.specsync).toBe("0.1.0");
+    expect(parsed.specsync).toBe(version);
     expect(parsed.summary.exitCode).toBe(1);
     expect(parsed.discrepancies).toHaveLength(1);
     expect(parsed.discrepancies[0].type).toBe("UNDOCUMENTED_ROUTE");

@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 import { Command } from "commander";
 import { checkCommand } from "./commands/check.js";
+import { version } from "./version.js";
 
 const program = new Command("specsync")
-  .version("0.1.0")
+  .version(version)
   .description("Static Express-to-OpenAPI drift detector");
 
 program
